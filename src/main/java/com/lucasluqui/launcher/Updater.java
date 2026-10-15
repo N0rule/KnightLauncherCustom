@@ -7,6 +7,7 @@ import com.lucasluqui.discord.DiscordPresenceClient;
 import com.lucasluqui.download.DownloadManager;
 import com.lucasluqui.download.data.URLDownloadQueue;
 import com.lucasluqui.launcher.ui.BaseUI;
+import com.lucasluqui.launcher.setting.Settings;
 import com.lucasluqui.util.FileUtil;
 import com.lucasluqui.util.ImageUtil;
 import com.lucasluqui.util.ProcessUtil;
@@ -195,8 +196,8 @@ public class Updater extends BaseUI
   private void downloadLatestVersion ()
   {
     String downloadUrl = "https://github.com/"
-      + LauncherGlobals.GITHUB_AUTHOR + "/"
-      + LauncherGlobals.GITHUB_REPO + "/"
+      + Settings.updateAuthor + "/"
+      + Settings.updateRepo + "/"
       + "releases/download/"
       + this.newVersion + "/"
       + "KnightLauncher-" + this.newVersion + ".zip";

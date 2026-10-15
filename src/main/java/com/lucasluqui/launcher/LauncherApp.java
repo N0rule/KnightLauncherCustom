@@ -725,7 +725,7 @@ public class LauncherApp
   @SuppressWarnings("all")
   public void fetchGithubData ()
   {
-    String rawResponseLatestRelease = INetUtil.getWebpageContent(LauncherGlobals.GITHUB_API_LATEST_RELEASE);
+    String rawResponseLatestRelease = INetUtil.getWebpageContent(LauncherGlobals.getGithubApiLatestRelease(Settings.updateAuthor, Settings.updateRepo));
 
     if (rawResponseLatestRelease == null) {
       log.error("Received no response from Github. Possible downtime?");
@@ -734,8 +734,14 @@ public class LauncherApp
 
     JSONObject jsonLatestRelease = new JSONObject(rawResponseLatestRelease);
 
+    // A repository without releases (e.g. a fresh fork) answers with an error body instead.
+    if (!jsonLatestRelease.has("tag_name")) {
+      log.error("Received an unexpected response from Github, no release found?");
+      return;
+    }
+
     this._latestRelease = jsonLatestRelease.getString("tag_name");
-    this._latestReleaseChangelog = jsonLatestRelease.getString("body");
+    this._latestReleaseChangelog = jsonLatestRelease.optString("body", "");
 
     ThreadingUtil.executeWithDelay(this::maybeUpdate, 3000);
   }

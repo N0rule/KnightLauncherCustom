@@ -10,6 +10,18 @@ public class LauncherGlobals
   public static final String GITHUB_REPO = "KnightLauncher";
   public static final String GITHUB_API_LATEST_RELEASE = "https://api.github.com/repos/" + GITHUB_AUTHOR + "/" + GITHUB_REPO + "/releases/latest";
 
+  /**
+   * Builds the "latest release" API URL for an arbitrary repository. Lets a fork
+   * point its updates at itself instead of the upstream repository.
+   */
+  public static String getGithubApiLatestRelease (String author, String repo)
+  {
+    if (author == null || author.trim().isEmpty() || repo == null || repo.trim().isEmpty()) {
+      return GITHUB_API_LATEST_RELEASE;
+    }
+    return "https://api.github.com/repos/" + author.trim() + "/" + repo.trim() + "/releases/latest";
+  }
+
   public static final String CDN_ENDPOINT = "cdn.knightlauncher.com";
   public static final String CDN_VERSION = "2";
 
