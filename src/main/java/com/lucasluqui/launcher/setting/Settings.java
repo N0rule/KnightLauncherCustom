@@ -24,8 +24,6 @@ public class Settings
 
   // Where launcher updates are checked for and downloaded from. Fork builders point
   // these at their own repository so updates keep their changes.
-  public static String updateAuthor = "lucasluqui";
-  public static String updateRepo = "KnightLauncher";
 
   // Compressor settings
   public static String compressorUnzipMethod = "4j";

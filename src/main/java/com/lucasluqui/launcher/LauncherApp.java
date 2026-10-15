@@ -725,7 +725,7 @@ public class LauncherApp
   @SuppressWarnings("all")
   public void fetchGithubData ()
   {
-    String rawResponseLatestRelease = INetUtil.getWebpageContent(LauncherGlobals.getGithubApiLatestRelease(Settings.updateAuthor, Settings.updateRepo));
+    String rawResponseLatestRelease = INetUtil.getWebpageContent(LauncherGlobals.getGithubApiLatestRelease(LauncherGlobals.GITHUB_AUTHOR, LauncherGlobals.GITHUB_REPO));
 
     if (rawResponseLatestRelease == null) {
       log.error("Received no response from Github. Possible downtime?");

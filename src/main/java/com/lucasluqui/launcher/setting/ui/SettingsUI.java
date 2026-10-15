@@ -315,48 +315,6 @@ public class SettingsUI extends BaseUI
     switchAutoUpdate.setSelected(Settings.autoUpdate);
     switchAutoUpdate.addActionListener(eventHandler::autoUpdateChangeEvent);
 
-    JSeparator sep6 = new JSeparator();
-    sep6.setBounds(Scale.rect(10, 550, 600, 16));
-    launcherSubPanel.add(sep6);
-
-    JLabel labelUpdateSource = new JLabel(_localeManager.getValue("m.update_source"));
-    labelUpdateSource.setBounds(Scale.rect(10, 565, 350, 20));
-    labelUpdateSource.setFont(Fonts.getFont("default", 14.0f, Font.ITALIC));
-    launcherSubPanel.add(labelUpdateSource);
-
-    JLabel labelUpdateSourceExplained = new JLabel(_localeManager.getValue("m.update_source_explained"));
-    labelUpdateSourceExplained.setBounds(Scale.rect(10, 585, 600, 30));
-    labelUpdateSourceExplained.setFont(Fonts.getFont("default", 11.0f, Font.ITALIC));
-    launcherSubPanel.add(labelUpdateSourceExplained);
-
-    JLabel labelUpdateAuthor = new JLabel(_localeManager.getValue("m.update_source_owner"));
-    labelUpdateAuthor.setBounds(Scale.rect(10, 620, 290, 18));
-    labelUpdateAuthor.setFont(Fonts.getFont("default", 11.0f, Font.ITALIC));
-    launcherSubPanel.add(labelUpdateAuthor);
-
-    updateAuthorTextField = new JTextField();
-    updateAuthorTextField.setBounds(Scale.rect(10, 640, 290, 25));
-    updateAuthorTextField.setFont(Fonts.getFont("code", 12.0f, Font.PLAIN));
-    updateAuthorTextField.putClientProperty(FlatClientProperties.STYLE, "arc: 999; borderWidth: 0");
-    updateAuthorTextField.setText(Settings.updateAuthor);
-    updateAuthorTextField.addActionListener(e -> eventHandler.saveUpdateSource());
-    updateAuthorTextField.addFocusListener(focusSaveListener);
-    launcherSubPanel.add(updateAuthorTextField);
-
-    JLabel labelUpdateRepo = new JLabel(_localeManager.getValue("m.update_source_repo"));
-    labelUpdateRepo.setBounds(Scale.rect(315, 620, 290, 18));
-    labelUpdateRepo.setFont(Fonts.getFont("default", 11.0f, Font.ITALIC));
-    launcherSubPanel.add(labelUpdateRepo);
-
-    updateRepoTextField = new JTextField();
-    updateRepoTextField.setBounds(Scale.rect(315, 640, 290, 25));
-    updateRepoTextField.setFont(Fonts.getFont("code", 12.0f, Font.PLAIN));
-    updateRepoTextField.putClientProperty(FlatClientProperties.STYLE, "arc: 999; borderWidth: 0");
-    updateRepoTextField.setText(Settings.updateRepo);
-    updateRepoTextField.addActionListener(e -> eventHandler.saveUpdateSource());
-    updateRepoTextField.addFocusListener(focusSaveListener);
-    launcherSubPanel.add(updateRepoTextField);
-
     return launcherPanel;
   }
 
@@ -1195,23 +1153,6 @@ public class SettingsUI extends BaseUI
   public JTextField publicKeyTextField = new JTextField();
   public JTextField getdownURLTextField = new JTextField();
   public JButton resetConnectionSettingsButton = new JButton();
-  public JTextField updateAuthorTextField = new JTextField();
-  public JTextField updateRepoTextField = new JTextField();
-
-  // Saves the update source whenever the user leaves or confirms one of its fields.
-  private final FocusListener focusSaveListener = new FocusListener()
-  {
-    @Override
-    public void focusGained (FocusEvent e)
-    {
-    }
-
-    @Override
-    public void focusLost (FocusEvent e)
-    {
-      eventHandler.saveUpdateSource();
-    }
-  };
   public JTextField betaCodeTextField;
   public JLabel labelFlamingoStatus = new JLabel();
   public JLabel labelFlamingoVersion = new JLabel();

@@ -6,8 +6,8 @@ import java.io.File;
 
 public class LauncherGlobals
 {
-  public static final String GITHUB_AUTHOR = "lucasluqui";
-  public static final String GITHUB_REPO = "KnightLauncher";
+  public static final String GITHUB_AUTHOR = "N0rule";
+  public static final String GITHUB_REPO = "KnightLauncherCustom";
   public static final String GITHUB_API_LATEST_RELEASE = "https://api.github.com/repos/" + GITHUB_AUTHOR + "/" + GITHUB_REPO + "/releases/latest";
 
   /**

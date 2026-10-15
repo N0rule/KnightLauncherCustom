@@ -214,27 +214,6 @@ public class SettingsEventHandler
     _settingsManager.setValue("launcher.autoUpdate", String.valueOf(this.ui.switchAutoUpdate.isSelected()));
   }
 
-  /**
-   * Stores where the launcher looks for its own updates. Pointing this at a fork's
-   * repository makes that fork the update source, keeping its changes in place.
-   */
-  public void saveUpdateSource ()
-  {
-    String author = this.ui.updateAuthorTextField.getText().trim();
-    String repo = this.ui.updateRepoTextField.getText().trim();
-
-    if (author.isEmpty()) author = LauncherGlobals.GITHUB_AUTHOR;
-    if (repo.isEmpty()) repo = LauncherGlobals.GITHUB_REPO;
-
-    Settings.updateAuthor = author;
-    Settings.updateRepo = repo;
-    _settingsManager.setValue("launcher.updateAuthor", author);
-    _settingsManager.setValue("launcher.updateRepo", repo);
-
-    this.ui.updateAuthorTextField.setText(author);
-    this.ui.updateRepoTextField.setText(repo);
-  }
-
   public void filePurgingChangeEvent (ActionEvent action)
   {
     // Only display a warning if the user is disabling this setting.

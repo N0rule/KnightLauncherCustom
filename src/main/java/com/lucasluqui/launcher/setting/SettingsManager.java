@@ -118,10 +118,6 @@ public class SettingsManager
 
     // Launcher update source. Point this at a fork's repository to receive that
     // fork's releases (which can include both upstream fixes and local changes).
-    createKeyIfNotExists("launcher.updateAuthor", LauncherGlobals.GITHUB_AUTHOR);
-    createKeyIfNotExists("launcher.updateRepo", LauncherGlobals.GITHUB_REPO);
-    Settings.updateAuthor = getValue("launcher.updateAuthor", LauncherGlobals.GITHUB_AUTHOR);
-    Settings.updateRepo = getValue("launcher.updateRepo", LauncherGlobals.GITHUB_REPO);
 
     log.info("Loaded required settings from properties file");
   }

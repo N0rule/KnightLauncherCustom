@@ -196,8 +196,8 @@ public class Updater extends BaseUI
   private void downloadLatestVersion ()
   {
     String downloadUrl = "https://github.com/"
-      + Settings.updateAuthor + "/"
-      + Settings.updateRepo + "/"
+      + LauncherGlobals.GITHUB_AUTHOR + "/"
+      + LauncherGlobals.GITHUB_REPO + "/"
       + "releases/download/"
       + this.newVersion + "/"
       + "KnightLauncher-" + this.newVersion + ".zip";
